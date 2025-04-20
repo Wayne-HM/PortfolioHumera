@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Humera's Portfolio</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg-color: rgb(0, 0, 35);
+      --text-color: white;
+      --card-bg: rgba(255, 255, 255, 0.05);
+    }
+
+    [data-theme="light"] {
+      --bg-color: #f5f5f5;
+      --text-color: #000;
+      --card-bg: #ffffff;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      font-family: "Poppins", sans-serif;
+      transition: all 0.4s ease;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 40px;
+      height: 80px;
+      background-color: rgb(8, 8, 55);
+      flex-wrap: wrap;
+    }
+
+    .nav-logo {
+      font-weight: bold;
+      font-size: 1.3rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: white;
+      transition: 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: rgb(160, 160, 221);
+    }
+
+    .toggle-btn,
+    .menu-icon {
+      background: none;
+      color: white;
+      border: 1px solid white;
+      padding: 5px 10px;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .menu-icon {
+      display: none;
+      font-size: 1.5rem;
+      border: none;
+    }
+
+    main hr {
+      border: 0;
+      background: rgb(142, 142, 219);
+      height: 1.2px;
+      margin: 40px 85px;
+    }
+
+    .firstSection {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      margin: 12vh 0;
+      flex-wrap: wrap;
+    }
+
+    .firstSection>div {
+      width: 30%;
+      min-width: 250px;
+    }
+
+    .rightSection img {
+      width: 100%;
+      max-width: 300px;
+      border-radius: 20px;
+      box-shadow: 0 4px 20px rgba(255, 255, 255, 0.2);
+    }
+
+    .text-purple {
+      color: rgb(171, 137, 202);
+    }
+
+    .secondSection {
+      max-width: 90vw;
+      margin: auto;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 2.5rem;
+      color: rgb(171, 137, 202);
+      margin-bottom: 30px;
+    }
+
+    .eduBox,
+    .skillsBox,
+    .projectsBox {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 30px;
+      padding: 20px;
+    }
+
+    .education-card,
+    .skill-card,
+    .project-card {
+      background-color: var(--card-bg);
+      padding: 25px;
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+      width: 100%;
+      max-width: 700px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .education-card:hover,
+    .skill-card:hover,
+    .project-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(255, 255, 255, 0.2);
+    }
+
+    .leftSection {
+      font-size: 2.5rem;
+    }
+
+    h2 {
+      font-size: 1.8rem;
+      color: rgb(177, 158, 255);
+      margin-bottom: 10px;
+    }
+
+    .course,
+    .skill-list,
+    .description {
+      color: rgb(200, 200, 200);
+      line-height: 1.6;
+    }
+
+    .contactSection {
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    .contact-info {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: var(--text-color);
+}
+
+.contact-info a {
+  color: rgb(171, 137, 202);
+  text-decoration: none;
+  transition: 0.3s ease;
+}
+
+.contact-info a:hover {
+  text-decoration: underline;
+}
+
+
+    @media (max-width: 768px) {
+      .nav-links {
+        flex-direction: column;
+        width: 100%;
+        display: none;
+        background-color: rgb(8, 8, 55);
+        padding: 20px;
+      }
+
+      .nav-links.show {
+        display: flex;
+      }
+
+      .menu-icon {
+        display: block;
+      }
+
+      .firstSection {
+        flex-direction: column-reverse;
+        gap: 30px;
+      }
+
+      .leftSection {
+        font-size: 1.8rem;
+        text-align: center;
+      }
+
+      nav {
+        padding: 0 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <nav>
+      <div class="nav-logo">Humera Nuzhat's Portfolio</div>
+      <div class="menu-icon" onclick="toggleMenu()">☰</div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Skills</a></li>
+        <li><a href="#">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><button class="toggle-btn" onclick="toggleTheme()">Theme</button></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="firstSection" data-aos="fade-up">
+      <div class="leftSection">
+        <div>Hello, I'm <span class="text-purple">Humera Nuzhat</span></div>
+        <div>I am a Passionate</div>
+        <span id="element" class="text-purple"></span>
+      </div>
+      <div class="rightSection">
+        <img src="fema1.jpg" alt="Humera" />
+      </div>
+    </section>
+
+    <hr>
+
+    <section class="secondSection">
+      <h1 class="section-title">Education</h1>
+      <div class="eduBox" data-aos="fade-up">
+        <div class="education-card">
+          <h2>2023 August - 2027 May</h2>
+          <div>B.Tech (CSE - AIML)</div>
+          <div>SR University</div>
+          <div class="course">
+            <strong>Course Work:</strong><br />
+            Data Structures & Algorithms, OS, DBMS, CN, AI & ML
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr>
+
+    <section class="secondSection">
+      <h1 class="section-title">Skills</h1>
+      <div class="skillsBox" data-aos="fade-up">
+        <div class="skill-card">
+          <h2>Technical Skills</h2>
+          <div class="skill-list">
+            HTML, CSS, JS, Python, C, ML, Web Dev
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr>
+
+    <section class="secondSection">
+      <h1 class="section-title">Projects</h1>
+      <div class="projectsBox" data-aos="fade-up">
+        <div class="project-card">
+          <h2>Portfolio Website</h2>
+          <div class="description">
+            Responsive portfolio showcasing profile, skills, and projects.
+          </div>
+        </div>
+        <div class="project-card">
+          <h2>Dark Web Risk Anaylzer</h2>
+          <div class="description">
+            Python tool to analyze risks and phising on onion sites(Dark web).
+          </div>
+        </div>
+        <div class="project-card">
+          <h2>Solar System with 3D Interface</h2>
+          <div class="description">
+            Advanced Website that showcases Solar System and its information in 3D.
+          </div>
+      </div>
+    </section>
+
+    <hr>
+
+    <section class="contactSection" id="contact" data-aos="fade-up">
+      <h1 class="section-title">Contact Me</h1>
+      <div class="contact-info">
+        <p><strong>Email:</strong> <a href="mailto:humeranuztw@gmail.com">humeranuztw@gmail.com</a></p>
+        <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/humera-nuzhat-95b23129a/" target="_blank">HumeraNuzhat-LinkedIn</a></p>
+      </div>  
+    </section>
+  </main>
+
+  <!-- Typewriter Effect -->
+  <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+  <script>
+    new Typed('#element', {
+      strings: ['Web Designer', 'Web Developer', 'AIML Enthusiast', 'Student.'],
+      typeSpeed: 48,
+      loop: true
+    });
+
+    function toggleTheme() {
+      const html = document.documentElement;
+      const current = html.getAttribute("data-theme");
+      html.setAttribute("data-theme", current === "dark" ? "light" : "dark");
+    }
+
+    function toggleMenu() {
+      const navLinks = document.getElementById("navLinks");
+      navLinks.classList.toggle("show");
+    }
+  </script>
+
+  <!-- AOS Scroll Animations -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
+</body>
+
+</html>
